@@ -7,10 +7,19 @@
       name: mysql-server
       state: installed
 
-  - name: start mysql server
+  - name: Enable mysql server
     ansible.builtin.service:
       name: mysqld
       state: started
       enabled: yes
   
-  #- name: connect to mysql server
+  - name: connect to mysql server
+    community.mysql.mysql_info:
+      login_user: root
+      login_password: ExpenseApp@1
+      login_host: mysql.gasikav82s.site
+      register: mysql_info
+
+  - name: print the output
+    ansible.builtin.debug:
+      msg: "Mysql Info: {{ mysql_info }}"
