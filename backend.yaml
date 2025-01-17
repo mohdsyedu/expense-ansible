@@ -42,7 +42,7 @@
       remote_src: yes
 
   - name: Install Node JS dependencies
-     community.general.npm:
+    community.general.npm:
      path: /app
 
   - name: Copy Back-End Service
